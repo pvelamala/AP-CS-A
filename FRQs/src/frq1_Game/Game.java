@@ -44,15 +44,16 @@ public class Game {
         if (!done) {
             score += levelOne.getPoints();
             done = levelTwo.goalReached();
+            if (!done) {
+                score += levelTwo.getPoints();
+                done = levelThree.goalReached();
+                if (!done) {
+                    score += levelThree.getPoints();
+                    
+                }
+            }
         }
-        if (!done) {
-            score += levelTwo.getPoints();
-            done = levelThree.goalReached();
-        }
-        if (!done) {
-            score += levelThree.getPoints();
-            done = isBonus();
-        }
+        done = isBonus();
         if (!done) {
             score *= 3;
         }
@@ -67,7 +68,7 @@ public class Game {
     public int playManyTimes(int num) {
         
         /* IMPLEMENTATION OF PART (B) */
-        int max = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
         for (int i = 0; i < num; i++) {
             play();
             max = Math.max(max, getScore());
