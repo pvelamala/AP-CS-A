@@ -37,7 +37,7 @@ public class Game {
      * as described in part (a) */
     public int getScore() {
         
-        /* IMPLEMENTATION OF PART (A) */
+        // IMPLEMENTATION OF PART (A)
         int score = 0;
         boolean done = levelOne.goalReached();
 
