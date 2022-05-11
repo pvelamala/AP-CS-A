@@ -44,15 +44,16 @@ public class Game {
         if (done) {
             score += levelOne.getPoints();
             done = levelTwo.goalReached();
-            if (done) {
-                score += levelTwo.getPoints();
-                done = levelThree.goalReached();
-                if (done) {
-                    score += levelThree.getPoints();
-                    
-                }
-            }
         }
+        if (done) {
+            score += levelTwo.getPoints();
+            done = done && levelThree.goalReached();
+        }
+        if (done) {
+            score +=  levelThree.getPoints();
+            done = done && isBonus();
+        }
+
         done = isBonus();
         if (done) {
             score *= 3;
@@ -69,9 +70,8 @@ public class Game {
         
         /* IMPLEMENTATION OF PART (B) */
         int max = Integer.MIN_VALUE; // BUG FIX: Needs to be MIN_VALUE so that any other value to be subbed instead.
-
         for (int i = 0; i < num; i++) {
-            play();
+        	play();
             max = Math.max(max, getScore());
         }
         
