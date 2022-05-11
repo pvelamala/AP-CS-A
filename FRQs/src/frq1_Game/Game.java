@@ -51,7 +51,6 @@ public class Game {
         }
         if (done) {
             score += levelThree.getPoints();
-            
         }
         if (isBonus()) {
             score *= 3;
