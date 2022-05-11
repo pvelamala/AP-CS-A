@@ -26,7 +26,9 @@ public class ReviewAnalysis {
     public double getAverageRating() {
         
         /* IMPLEMENTATION FOR PART (A) */
-        int total = allReviews[0].getRating();
+    	int total = 0; // BUG FIX: Total starts at 0 instead of the value of the first review rating.
+        
+    	//int total = allReviews[0].getRating();
 
         for (Review r : allReviews) {
             total += r.getRating();
@@ -53,7 +55,7 @@ public class ReviewAnalysis {
                 
                 // if the last character of the comment is not in an expected set,
                 // correct the comment by appending a period to it.
-                if (comment.indexOf(ending.substring(comment.length() - 1)) == -1) {
+                if (ending.indexOf(comment.substring(comment.length() - 1)) == -1) { // BUG FIX: checks to see if the last character of comment is not in the ending string.
                     comment += ".";
                 }
                 arr.add(i + "-" + comment);
