@@ -43,22 +43,18 @@ public class Game {
 
         if (done) {
             score += levelOne.getPoints();
-            done = levelTwo.goalReached();
         }
+        done = levelTwo.goalReached() && done;
         if (done) {
             score += levelTwo.getPoints();
-            done = done && levelThree.goalReached();
         }
+        done = levelThree.goalReached() && done;
         if (done) {
-            score +=  levelThree.getPoints();
-            done = done && isBonus();
+            score += levelThree.getPoints();
         }
-
-        done = isBonus();
-        if (done) {
+        if (isBonus()) {
             score *= 3;
         }
-        // BUG FIX: was !done in each if statement. changed to done so that the boolean logic is correct
         return score;
     }
 

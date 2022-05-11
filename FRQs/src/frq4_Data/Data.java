@@ -9,30 +9,29 @@ package frq4_Data;
 public class Data {
 
     public static final int MAX = 13; /* value provided as example */
-    private int[][] grid;
+    private static int[][] grid;
+    
+    
+    public static void main(String[] args) {
+    	grid = new int[MAX][MAX];
+    	repopulate();
+    	countIncreasingCols();
+    }
+    
     
     /** Fills all elements of grid with randomly generated values,
      * as described in part (a)
      * Precondition: grid is not null.
      *     grid has at least one element.
      */
-    public void repopulate() {
+    public static void repopulate() {
         
         /* TO BE IMPLEMENTED IN PART (A) */
-        for (int r = 0; r < grid[0].length; r++) {
-            for (int c = 0; c < grid.length; c++) {
-                int value = 0;
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[r].length; c++) {
+                int value = (int) (Math.random() * MAX) + 1;
                 
-                // if MAX is less than 10 then there's no chance for
-                // any random value to meet problem requirements and
-                // the while() loop will spin forever. Guard against
-                // that by setting initial value to something that
-                // will prevent entering the loop all together.
-                if (MAX < 10) {
-                    value = 10;
-                }
-                
-                while (value % 10 == 0 && value % 100 != 0) {
+                while (value % 10 != 0 || value % 100 == 0) {
                     value = (int) (Math.random() * MAX) + 1;
                 }
                 
@@ -46,7 +45,7 @@ public class Data {
      * Precondition: grid is not null.
      *    grid has at least one element.
      */
-    public int countIncreasingCols() {
+    public static int countIncreasingCols() {
         
         /* TO BE IMPLEMENTED IN PART (B) */
         int count = 0;
