@@ -37,7 +37,7 @@ public class Game {
      * as described in part (a) */
     public int getScore() {
         
-        /* IMPLEMENTATION OF PART (A) */
+        // IMPLEMENTATION OF PART (A)
         int score = 0;
         boolean done = levelOne.goalReached();
 
@@ -53,10 +53,12 @@ public class Game {
             score +=  levelThree.getPoints();
             done = done && isBonus();
         }
+
+        done = isBonus();
         if (done) {
             score *= 3;
         }
-        
+        // BUG FIX: was !done in each if statement. changed to done so that the boolean logic is correct
         return score;
     }
 
@@ -67,7 +69,7 @@ public class Game {
     public int playManyTimes(int num) {
         
         /* IMPLEMENTATION OF PART (B) */
-        int max = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE; // BUG FIX: Needs to be MIN_VALUE so that any other value to be subbed instead.
         for (int i = 0; i < num; i++) {
         	play();
             max = Math.max(max, getScore());
