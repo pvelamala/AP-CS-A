@@ -54,7 +54,7 @@ public class Data {
         for (int c = 0; c < grid[0].length; c++) {
             boolean increasing = false;
             for (int r = 1; increasing && r < grid.length; r++) {
-                increasing = (grid[r-1][c] > grid[r][c]);
+                increasing = (grid[r-1][c] < grid[r][c]);
             }
             if (increasing) {
                 count++;
