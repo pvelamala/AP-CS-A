@@ -50,7 +50,7 @@ public class Data {
         
         /* TO BE IMPLEMENTED IN PART (B) */
         int count = 0;
-        
+        //Adding a comment here.
         for (int c = 0; c < grid[0].length; c++) {
             boolean increasing = true;
             for (int r = 1; increasing && r < grid.length; r++) {
